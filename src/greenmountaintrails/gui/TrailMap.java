@@ -5,10 +5,19 @@
  */
 package greenmountaintrails.gui;
 
+import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Ian
  */
-public class TrailInfoDisplay {
+public class TrailMap extends JPanel {
+    
+    private BufferedImage map;
+    
+    public TrailMap(){
+        
+    }
     
 }
