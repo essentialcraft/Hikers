@@ -5,6 +5,10 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,16 +26,9 @@ public class MainFrame {
     private TrailControls controls;
     private TrailList trailOne, trailTwo, trailThree, trailFour;
     
-
-    
-    
-    
-    
-    
-    
     public MainFrame(){
         frame = new JFrame();
-        mainPanel = new JPanel();
+        mainPanel = new JPanel(new BorderLayout());
         
         map = new TrailMap();
         waitList= new HikersWaiting();
@@ -41,29 +38,25 @@ public class MainFrame {
         trailThree = new TrailList("Trail Three");
         trailFour = new TrailList("Trail Four");
         
-        mainPanel.add(map);
-        mainPanel.add(waitList);
-        mainPanel.add(controls);
-        mainPanel.add(trailOne);
-        mainPanel.add(trailTwo);
-        mainPanel.add(trailThree);
-        mainPanel.add(trailFour);
+        waitList.setPreferredSize(new Dimension(100, 600));
+        map.setPreferredSize(new Dimension(500,500));
+        //mainPanel.add(controls, BorderLayout.CENTER);
+        
+        mainPanel.add(waitList, BorderLayout.WEST);
+        mainPanel.add(map, BorderLayout.EAST);
+        //mainPanel.add(map, BorderLayout.CENTER);
         
         frame.add(mainPanel);
+        
+        
         this.build();
     }
-    
-    
-    
-    
-    
-    
     
     public void build() {
         //Display a title
         frame.setTitle("Green Mountain Trails Software");
 
-        frame.setSize(1000, 800);
+        //frame.setSize(1000, 800);
         //setUndecorated(true);
         //Specify an action on close
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

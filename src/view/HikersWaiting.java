@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -22,8 +24,13 @@ public class HikersWaiting extends JPanel {
         waitLabel = new JLabel("Hikers Waiting");
         waitList = new JTextArea();
         
-        this.add(waitLabel);
-        this.add(waitList);
+        this.setLayout(new BorderLayout());
+        
+        
+        this.add(waitLabel, BorderLayout.NORTH);
+        this.add(waitList, BorderLayout.SOUTH);
+        
+        
     }
     
 }

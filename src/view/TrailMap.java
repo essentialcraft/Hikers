@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
@@ -14,12 +15,11 @@ import javax.swing.JPanel;
  */
 public class TrailMap extends JPanel {
     
-    private BufferedImage map;
+    
     
     public TrailMap(){
-        //map = new BufferedImage(100, 100, 100);
         
-        this.setSize(600, 400);
+        
         
     }
     

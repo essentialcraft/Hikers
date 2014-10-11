@@ -21,6 +21,9 @@ public class TrailList extends JPanel {
     public TrailList(String trailName){
         trailLabel = new JLabel(trailName);
         trailList = new JTextArea();
+        
+        this.add(trailLabel);
+        this.add(trailList);
     }
     
 }
