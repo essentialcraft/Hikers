@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package greenmountaintrails.gui;
+package view;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 public class MainFrame {
     
     private JFrame frame;
+    private JPanel mainPanel;
     
     private TrailMap map;
     private HikersWaiting waitList;
@@ -29,6 +31,7 @@ public class MainFrame {
     
     public MainFrame(){
         frame = new JFrame();
+        mainPanel = new JPanel();
         
         map = new TrailMap();
         waitList= new HikersWaiting();
@@ -38,15 +41,16 @@ public class MainFrame {
         trailThree = new TrailList("Trail Three");
         trailFour = new TrailList("Trail Four");
         
-        frame.add(map);
-        frame.add(waitList);
-        frame.add(controls);
-        frame.add(trailOne);
-        frame.add(trailTwo);
-        frame.add(trailThree);
-        frame.add(trailFour);
+        mainPanel.add(map);
+        mainPanel.add(waitList);
+        mainPanel.add(controls);
+        mainPanel.add(trailOne);
+        mainPanel.add(trailTwo);
+        mainPanel.add(trailThree);
+        mainPanel.add(trailFour);
         
-        build();
+        frame.add(mainPanel);
+        this.build();
     }
     
     
@@ -57,8 +61,9 @@ public class MainFrame {
     
     public void build() {
         //Display a title
-        frame.setTitle("Buy Sell Make Money All Day!");
+        frame.setTitle("Green Mountain Trails Software");
 
+        frame.setSize(1000, 800);
         //setUndecorated(true);
         //Specify an action on close
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +73,7 @@ public class MainFrame {
         frame.setVisible(true);
 
         frame.pack();
-        //setContentPane(mainPanel);
+        frame.setContentPane(mainPanel);
     }
     
 }

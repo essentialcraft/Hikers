@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package greenmountaintrails.gui;
+package model;
 
 /**
  *
  * @author Ian
  */
-public class TrailMapPanel {
+public class Trails {
     
 }

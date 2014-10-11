@@ -3,19 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package greenmountaintrails;
+package ctrl;
+import model.*;
+import view.*;
 
 /**
  *
  * @author Ian
  */
-public class GreenMountainTrails {
+public class TrailsApp {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        MainFrame window = new MainFrame();
+        TrailModel model = new TrailModel();
+        Controller controller = new Controller(window, model);
+        
     }
     
 }

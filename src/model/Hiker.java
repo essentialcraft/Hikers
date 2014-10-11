@@ -3,21 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package greenmountaintrails.gui;
-
-import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
+package model;
 
 /**
  *
  * @author Ian
  */
-public class TrailMap extends JPanel {
-    
-    private BufferedImage map;
-    
-    public TrailMap(){
-        
-    }
+public class Hiker {
     
 }
