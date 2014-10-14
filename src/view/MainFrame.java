@@ -11,6 +11,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -27,8 +28,11 @@ public class MainFrame {
     private TrailList trailOne, trailTwo, trailThree, trailFour;
     
     public MainFrame(){
-        frame = new JFrame();
-        mainPanel = new JPanel(new BorderLayout());
+        frame = new JFrame();       
+        mainPanel = new JPanel(new MigLayout(
+                "fill, debug", // Layout Constraints
+                "", // Column constraints
+                "")); // Row constraints
         
         map = new TrailMap();
         waitList= new HikersWaiting();
@@ -38,13 +42,9 @@ public class MainFrame {
         trailThree = new TrailList("Trail Three");
         trailFour = new TrailList("Trail Four");
         
-        waitList.setPreferredSize(new Dimension(100, 600));
-        map.setPreferredSize(new Dimension(500,500));
-        //mainPanel.add(controls, BorderLayout.CENTER);
+        mainPanel.add(waitList, "span");
+        mainPanel.add(map);
         
-        mainPanel.add(waitList, BorderLayout.WEST);
-        mainPanel.add(map, BorderLayout.EAST);
-        //mainPanel.add(map, BorderLayout.CENTER);
         
         frame.add(mainPanel);
         

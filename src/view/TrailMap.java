@@ -6,7 +6,13 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -17,10 +23,29 @@ public class TrailMap extends JPanel {
     
     
     
-    public TrailMap(){
-        
+    
+    BufferedImage image;
+
+    public TrailMap() {
+        try {
+            String path = "area_map.png";
+            image = ImageIO.read(getClass().getResource(path));
+            
+            JLabel picLabel = new JLabel(new ImageIcon(image));
+            add(picLabel);
+        } catch (IOException ex) {
+            // handle exception...
+        }
+    }
+
+    @Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
+    System.out.println("image is null: " + (image == null)); // TODO: Delete this
+    g.drawImage(image, getWidth(), getHeight(), null);      
+}
         
         
     }
     
-}
+
