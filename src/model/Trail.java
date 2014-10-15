@@ -11,6 +11,8 @@ package model;
  * 
  * Trail implements TrailInterface which forces each Trail child 
  * to implement the TrailInterface method directly
+ * 
+ * TEST COMMENT
  */
 public abstract class Trail implements TrailInterface{
     //keep track of each HikerStack that is added to all of the trails
