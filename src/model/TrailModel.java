@@ -101,4 +101,18 @@ public class TrailModel {
             trailController.assignHikerStack(hikerStackFour, hikerStackFour.peek().getTrailNo());
         }
     }
+    
+    /**
+     *
+     * @return
+     * 
+     * returns access to the trailController so the gui can gain access to the 
+        full hiker stack which in turn gives access to all the hikers in that
+        stack....main goal is to access hiker information for hikers in specific
+        trails
+     * 
+     */
+    public TrailController getTrailController(){
+        return trailController;
+    }
 }
