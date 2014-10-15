@@ -37,7 +37,7 @@ public class TrailsApp {
                     //set the most recent hiker to the waiting list
                     window.getWaitPanel().setList(model.getTempHiker().toString());
                 try {
-                    sleep(3000);
+                    sleep(30);
                 } catch (InterruptedException ex) {
                     ex.getMessage();
                 }}

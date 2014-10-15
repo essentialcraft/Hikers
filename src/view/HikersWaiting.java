@@ -9,7 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.text.DefaultCaret;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -20,19 +22,24 @@ public class HikersWaiting extends JPanel {
     
     private JLabel waitLabel;
     private JTextArea waitList;
+    private JScrollPane scroll;
     
     public HikersWaiting(){
         waitLabel = new JLabel("Hikers Waiting");
         waitList = new JTextArea();
-        
+        DefaultCaret caret = (DefaultCaret)waitList.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        waitList.setLineWrap(true);
+        waitList.setWrapStyleWord(true);
+        scroll = new JScrollPane(waitList);
         this.setLayout(new MigLayout(
                 "", // Layout Constraints
                 "[200]", // Column constraints
-                "[][grow]")); // Row constraints));
+                "[][500]")); // Row constraints));
         
         
         this.add(waitLabel, "wrap");
-        this.add(waitList, "grow");
+        this.add(scroll, "grow");
         
         
     }
