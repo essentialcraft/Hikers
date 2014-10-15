@@ -33,9 +33,9 @@ public class HikersWaiting extends JPanel {
         waitList.setWrapStyleWord(true);
         scroll = new JScrollPane(waitList);
         this.setLayout(new MigLayout(
-                "", // Layout Constraints
+                "fill", // Layout Constraints
                 "[200]", // Column constraints
-                "[][500]")); // Row constraints));
+                "[][grow]")); // Row constraints));
         
         
         this.add(waitLabel, "wrap");

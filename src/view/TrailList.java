@@ -25,28 +25,23 @@ public class TrailList extends JPanel {
     public TrailList(String trailName){
         trailLabel = new JLabel(trailName);
         trailList = new JTextArea();
-        
-        this.setLayout(new MigLayout(
-                "debug, ins 0", // Layout Constraints
-                "", // Column constraints
-                "[][10:50:150]")); // Row constraints));
-        
-        
-        
         DefaultCaret caret = (DefaultCaret)trailList.getCaret();
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         trailList.setLineWrap(true);
         trailList.setWrapStyleWord(true);
         scroll = new JScrollPane(trailList);
         
+        this.setLayout(new MigLayout(
+                "debug, fill, ins 0", // Layout Constraints
+                "[150]", // Column constraints
+                "[][200]")); // Row constraints));
+
         
-        
-        
-        this.add(trailLabel, "wrap");
-        this.add(scroll, "grow, span");
+        this.add(trailLabel, "span");
+        this.add(scroll, "grow");
     }
     
-    public void setList(String in) {
+    public void setNamesToList(String in) {
         trailList.insert(in + "\n", 0);
     }
     

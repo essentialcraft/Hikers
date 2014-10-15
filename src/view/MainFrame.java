@@ -48,13 +48,14 @@ public class MainFrame {
         controls = new TrailControls();
         
         trailsPanel = new JPanel(new MigLayout(
-                "fill", // Layout Constraints
+                "debug, fill, ins 0", // Layout Constraints
                 "", // Column constraints
                 "")); // Row constraints);
         
         
         
         trails = new TrailList[4];
+        //trailsPanel.add(trails[0] = new TrailList(names[0]));
         for(int i = 0; i < trails.length; i++){
             trailsPanel.add(trails[i] = new TrailList(names[i]));
         }
@@ -101,5 +102,9 @@ public class MainFrame {
     
     public HikersWaiting getWaitPanel(){
         return waitList;
+    }
+    
+    public TrailList getTrailsPanel(int index){
+        return trails[index];
     }
 }
