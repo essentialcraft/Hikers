@@ -34,6 +34,7 @@ public class TrailsApp {
                 
                 while(true){
                     model.generateHiker();
+                    
                 try {
                     sleep(3000);
                 } catch (InterruptedException ex) {
