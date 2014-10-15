@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package ctrl;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import model.*;
 import view.*;
 
@@ -24,6 +26,20 @@ public class Controller {
         this.model = model;
     }
         
+    //main flow of methods
+    public class SubmitListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            
+            
+            
+            
+         
+            
+            
+        }
     
+    
+    }
     
 }
