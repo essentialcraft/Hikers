@@ -29,13 +29,13 @@ public class TrailList extends JPanel {
         this.setLayout(new MigLayout(
                 "", // Layout Constraints
                 "", // Column constraints
-                "[][10:50:75]")); // Row constraints));
+                "[][10:50:150]")); // Row constraints));
         
         
         new JTextArea();
         DefaultCaret caret = (DefaultCaret)trailList.getCaret();
-        //caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-        //trailList.setLineWrap(true);
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        trailList.setLineWrap(true);
         trailList.setWrapStyleWord(true);
         scroll = new JScrollPane(trailList);
         
@@ -43,7 +43,7 @@ public class TrailList extends JPanel {
         
         
         this.add(trailLabel, "wrap");
-        this.add(trailList);
+        this.add(trailList, "grow, span");
     }
     
     public void setList(String in) {
