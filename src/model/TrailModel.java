@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Random;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +35,8 @@ public class TrailModel {
     private HikerStack hikerStackOne, hikerStackTwo, hikerStackThree, hikerStackFour;
     //psuedo random number generator
     private Random rand;
+    //temporaraly stores a newly generated hiker
+    private Hiker tempHiker;
     
     public TrailModel(){
         trailController = new TrailController();
@@ -50,7 +51,7 @@ public class TrailModel {
     public void generateHiker(){
         int r = (rand.nextInt(4) + 1);
         Hiker newHiker = new Hiker(r);
-        //JOptionPane.showMessageDialog(null, newHiker.toString());
+        tempHiker = newHiker;
         
         if(r == 1){
             hikerStackOne.push(newHiker);
@@ -65,6 +66,11 @@ public class TrailModel {
             hikerStackFour.push(newHiker);
             checkHikerStackFull(hikerStackFour, r);
         }
+    }
+    
+    //returns temp hiker
+    public Hiker getTempHiker(){
+        return tempHiker;
     }
     
     //checks if a hikerstack is full and if it is it dumps down into the
