@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package ctrl;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -20,12 +23,25 @@ public class TrailsApp {
         // TODO code application logic here
         
             MainFrame window = new MainFrame();
-            TrailModel model = new TrailModel();
+            final TrailModel model = new TrailModel();
             Controller controller = new Controller(window, model);
             
             //window.getList(1).setList("Jimmothy Tybottom");
         
-        
+        Thread thread = new Thread(){
+            @Override
+            public void run(){
+                
+                while(true){
+                    model.generateHiker();
+                try {
+                    sleep(3000);
+                } catch (InterruptedException ex) {
+                    ex.getMessage();
+                }}
+            }
+        };
+        thread.start();
         
     }
     

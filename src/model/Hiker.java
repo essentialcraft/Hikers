@@ -10,7 +10,9 @@ import java.util.Date;
  *
  * @author Spconway
  * 
- * 
+ * Need method that is called in constructor that reads a random first name from
+ * the first name list and a random last name from the last name list. I need 
+ * to put first and last names in seperate files.
  */
 public class Hiker {
     //hiker_Number is static to keep track of global number of hikers
@@ -41,15 +43,23 @@ public class Hiker {
         this.trailNo = trailNo;
         //increment hiker_number
         global_hiker_Number++;
-        //set instance variable to static variable
+        //set hiker as the combination of random first name and rando
+        //last name
         this.hiker = global_hiker_Number;
         //setting hikerDB file path
         hiker_DB = "hikers.txt";
         //lastly, write new hiker to file
         writeToFile();
     }
-    
-    
+    //reads 
+//    private String randomFirst(){
+//        String firstName;
+//        return firstName;
+//    };
+//    private String randomLast(){
+//        String firstName;
+//        return firstName;
+//    };
     
     
     
