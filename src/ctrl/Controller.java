@@ -24,6 +24,10 @@ public class Controller {
     public Controller(MainFrame window, TrailModel model){
         this.window = window;
         this.model = model;
+        
+        this.window.addListener(new SubmitListener());
+        
+        //window.getWaitList();
     }
         
     //main flow of methods

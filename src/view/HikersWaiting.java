@@ -37,4 +37,12 @@ public class HikersWaiting extends JPanel {
         
     }
     
+    public void setList(String in) {
+        waitList.insert(in + "\n", 0);
+    }
+    
+    public JTextArea getWaitList(){
+        return waitList;
+    }
+    
 }

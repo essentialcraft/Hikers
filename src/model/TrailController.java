@@ -42,23 +42,23 @@ public class TrailController {
     
     
     //DON'T THINK I NEED THESE BUT I'LL KEEP UNTIL I KNOW FOR SURE
-//    //returns trailOne
-//    public TrailOne getTrailOne(){
-//        return trailOne;
-//    }
-//    
-//    //returns trailTwo
-//    public TrailTwo getTrailTwo(){
-//        return trailTwo;
-//    }
-//    
-//    //returns trailThree
-//    public TrailThree getTrailThree(){
-//        return trailThree;
-//    }
-//    
-//    //returns trailFour
-//    public TrailFour getTrailFour(){
-//        return trailFour;
-//    }
+    //returns trailOne
+    public TrailOne getTrailOne(){
+        return trailOne;
+    }
+    
+    //returns trailTwo
+    public TrailTwo getTrailTwo(){
+        return trailTwo;
+    }
+    
+    //returns trailThree
+    public TrailThree getTrailThree(){
+        return trailThree;
+    }
+    
+    //returns trailFour
+    public TrailFour getTrailFour(){
+        return trailFour;
+    }
 }

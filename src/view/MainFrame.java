@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
@@ -32,6 +33,8 @@ public class MainFrame {
         "Soft kittens trail"
     };
     
+    
+    
     public MainFrame(){
         frame = new JFrame();       
         
@@ -50,7 +53,8 @@ public class MainFrame {
                 "")); // Row constraints);
         
         
-        trails= new TrailList[4];
+        
+        trails = new TrailList[4];
         for(int i = 0; i < trails.length; i++){
             trailsPanel.add(trails[i] = new TrailList(names[i]));
         }
@@ -89,4 +93,13 @@ public class MainFrame {
 //    public TrailList getList(int i){
 //        return trails[i];
 //    }
+    
+    public void addListener(ActionListener listen) {
+        
+        
+    }
+    
+    public HikersWaiting getWaitPanel(){
+        return waitList;
+    }
 }
