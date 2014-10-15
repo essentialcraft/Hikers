@@ -50,7 +50,7 @@ public class TrailModel {
     public void generateHiker(){
         int r = (rand.nextInt(4) + 1);
         Hiker newHiker = new Hiker(r);
-        JOptionPane.showMessageDialog(null, newHiker.toString());
+        //JOptionPane.showMessageDialog(null, newHiker.toString());
         
         if(r == 1){
             hikerStackOne.push(newHiker);
