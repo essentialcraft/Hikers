@@ -8,6 +8,7 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -15,22 +16,30 @@ import javax.swing.JPanel;
  */
 public class TrailControls extends JPanel {
     
-    private JButton addHiker;
+    private JButton addHikerBtn;
     private JButton time1X, time2X, time3X;
     
     private JLabel timeLabel;
     
     public TrailControls(){
-        addHiker = new JButton("Add Hiker");
+        addHikerBtn = new JButton("Add Hiker");
         
+        timeLabel = new JLabel("0700");
         time1X = new JButton("1X");
         time2X = new JButton("2X");
         time3X = new JButton("3X");
         
-        this.add(addHiker);
-        this.add(time1X);
-        this.add(time2X);
-        this.add(time3X);
+        setLayout(new MigLayout(
+                "", // Layout Constraints
+                "[]push[][][][]", // Column constraints
+                "")); // Row constraints));)
+        
+        add(addHikerBtn);
+        
+        add(timeLabel);
+        add(time1X);
+        add(time2X);
+        add(time3X);
     }
     
 }

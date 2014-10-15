@@ -19,9 +19,13 @@ public class TrailsApp {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        MainFrame window = new MainFrame();
-        TrailModel model = new TrailModel();
-        Controller controller = new Controller(window, model);
+            MainFrame window = new MainFrame();
+            TrailModel model = new TrailModel();
+            Controller controller = new Controller(window, model);
+            
+            //window.getList(1).setList("Jimmothy Tybottom");
+        
+        
         
     }
     

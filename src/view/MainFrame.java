@@ -20,33 +20,49 @@ import net.miginfocom.swing.MigLayout;
 public class MainFrame {
     
     private JFrame frame;
-    private JPanel mainPanel;
+    private JPanel mainPanel, trailsPanel;
     
     private TrailMap map;
     private HikersWaiting waitList;
     private TrailControls controls;
-    private TrailList trailOne, trailTwo, trailThree, trailFour;
+    private TrailList trails[];
+    private String names[] = {"Easy Trail",
+        "Antonio Banderas Trail",
+        "Death Trail",
+        "Soft kittens trail"
+    };
     
     public MainFrame(){
         frame = new JFrame();       
+        
         mainPanel = new JPanel(new MigLayout(
-                "fill, debug", // Layout Constraints
+                "fill", // Layout Constraints
                 "", // Column constraints
                 "")); // Row constraints
-        
+        frame.add(mainPanel);
         map = new TrailMap();
         waitList= new HikersWaiting();
         controls = new TrailControls();
-        trailOne = new TrailList("Trail One");
-        trailTwo = new TrailList("Trail Two");
-        trailThree = new TrailList("Trail Three");
-        trailFour = new TrailList("Trail Four");
         
-        mainPanel.add(waitList, "span");
-        mainPanel.add(map);
+        trailsPanel = new JPanel(new MigLayout(
+                "fill", // Layout Constraints
+                "", // Column constraints
+                "")); // Row constraints);
         
         
-        frame.add(mainPanel);
+        trails= new TrailList[4];
+        for(int i = 0; i < trails.length; i++){
+            trailsPanel.add(trails[i] = new TrailList(names[i]));
+        }
+        
+        
+        mainPanel.add(waitList, "dock west");
+        mainPanel.add(map, "wrap");
+        mainPanel.add(controls, "grow, wrap");
+        mainPanel.add(trailsPanel, "grow");
+        
+        
+        
         
         
         this.build();
@@ -67,6 +83,10 @@ public class MainFrame {
 
         frame.pack();
         frame.setContentPane(mainPanel);
+        frame.setLocationRelativeTo(null);
     }
     
+//    public TrailList getList(int i){
+//        return trails[i];
+//    }
 }

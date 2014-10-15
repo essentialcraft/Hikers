@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/view/TrailMap.java</file>
             <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/view/MainFrame.java</file>
+            <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/ctrl/Controller.java</file>
             <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/view/TrailList.java</file>
             <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/view/HikersWaiting.java</file>
+            <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/ctrl/TrailsApp.java</file>
             <file>file:/C:/Users/Ian/Google%20Drive/Data%20Structures/Hikers/src/view/TrailControls.java</file>
         </group>
     </open-files>

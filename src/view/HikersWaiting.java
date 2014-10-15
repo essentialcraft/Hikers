@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -24,11 +25,14 @@ public class HikersWaiting extends JPanel {
         waitLabel = new JLabel("Hikers Waiting");
         waitList = new JTextArea();
         
-        this.setLayout(new BorderLayout());
+        this.setLayout(new MigLayout(
+                "", // Layout Constraints
+                "[200]", // Column constraints
+                "[][grow]")); // Row constraints));
         
         
-        this.add(waitLabel, BorderLayout.NORTH);
-        this.add(waitList, BorderLayout.SOUTH);
+        this.add(waitLabel, "wrap");
+        this.add(waitList, "grow");
         
         
     }
