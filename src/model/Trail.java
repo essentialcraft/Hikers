@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Iterator;
+
 
 
 
@@ -14,9 +16,11 @@ package model;
  * 
  * TEST COMMENT
  */
-public abstract class Trail implements TrailInterface{
+public abstract class Trail implements TrailInterface {
     //keep track of each HikerStack that is added to all of the trails
     private ArrayQueue<HikerStack> hikerStackQueue;
+    Iterator<HikerStack> iter = hikerStackQueue.iterator();
+    
     
     public Trail(){
         hikerStackQueue = new ArrayQueue();
@@ -50,4 +54,6 @@ public abstract class Trail implements TrailInterface{
     public ArrayQueue getHikerStack(){
         return hikerStackQueue;
     }
+    
+    
 }
