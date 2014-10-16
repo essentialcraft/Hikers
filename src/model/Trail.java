@@ -17,6 +17,9 @@ package model;
 public abstract class Trail implements TrailInterface{
     //keep track of each HikerStack that is added to all of the trails
     private ArrayQueue<HikerStack> hikerStackQueue;
+    //maxCapacity is the limit to how many hikerstacks can be in the
+    //que before the que needs to be empties
+    private final int MAX_CAPACITY = 2;
     
     public Trail(){
         hikerStackQueue = new ArrayQueue();
@@ -32,9 +35,8 @@ public abstract class Trail implements TrailInterface{
      * true if the trail is full
      */
     public void checkTrailsFull(){
-        int maxCapacity = 2;
         
-        if(hikerStackQueue.size() == maxCapacity){
+        if(hikerStackQueue.size() == MAX_CAPACITY){
             //releaseHikers();
             //i assume we can release all 20 hikers at once meaning in the 
             //gui it will show a list of 20 hiker names
@@ -47,7 +49,19 @@ public abstract class Trail implements TrailInterface{
         hikerStackQueue.add(h);
     }
     
-    public ArrayQueue getHikerStack(){
-        return hikerStackQueue;
+    //returns all hikers who are CURRENTLY going up the mountain
+    //does not include hikers that are in the que
+    //THIS CLASS NEEDS TO HAVE THE CHECKTRAILSFULL METHOD CALLED FIRST BECAUSE
+    //IF IT IS NOT CALLED THEN THE BELOW METHOD WILL RETURN AN ERROR
+    public HikerStack[] getHikersCurrentlyGoingUpMountain(){
+        HikerStack[] h = new HikerStack[MAX_CAPACITY];
+        
+        //looping through twice removes two hikerstacks so hikers can go up
+        //the mountsin
+        for(int i = 0; i < h.length; i++){
+            h[i] = hikerStackQueue.remove();
+        }
+        
+        return h;
     }
 }

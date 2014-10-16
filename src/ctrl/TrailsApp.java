@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package ctrl;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 

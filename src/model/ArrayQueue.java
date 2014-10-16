@@ -123,11 +123,6 @@ public class ArrayQueue<E> extends AbstractQueue<E>
         capacity = newCapacity;
         theData = newData;
     }
-
-    @Override
-    public Iterator<E> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
     public boolean add(E e){
@@ -160,6 +155,11 @@ public class ArrayQueue<E> extends AbstractQueue<E>
         } else {
             return theData[front];
         }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

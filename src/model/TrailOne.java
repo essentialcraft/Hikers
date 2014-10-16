@@ -17,7 +17,6 @@ public class TrailOne extends Trail{
     //wheeloffate will use the hikerDies method in the hikerstack class
     @Override
     public void wheelOfFate() {
-        super.getHikerStack();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

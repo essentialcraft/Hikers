@@ -149,11 +149,12 @@ public class Hiker {
             //passing true as second parameter enables append mode
             fw = new FileWriter(file, true);
             /********CREATE STRING CONTAINING HIKER # AND ARRTIME******/
-            String s = "Hiker: " + this.hiker + " Arrival Time: " + this.arrTime + " Trail Number: " + this.getTrailNo();
+            String s = "Hiker: " + this.hiker + " Name: " + this.hikerName + " Arrival Time: " + this.arrTime + " Trail Number: " + this.getTrailNo();
             fw.write(s);
             //calling system.getproperty and passing line.separator causes
             //puts the curser at a new line in the txt file
             fw.write(System.getProperty("line.separator"));
+            
         }catch(FileNotFoundException e){
             e.getMessage();
         }catch(IOException e){
