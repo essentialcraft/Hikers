@@ -49,6 +49,23 @@ public class TrailModel {
     
     //uses a psuedo random number to assign hikers at "random" to trails
     public void generateHiker(){
+        /*
+         * PROBLEM: Want to have the possibility of adding multiple hikers
+         * each time generateHiker is called
+         * 
+         * SOLUTION: have an array of number representing the chance of
+         * generating multiple hikers
+         * 
+         * EXAMPLE: [1,1,1,1,1,2,2,2,3,3]
+         * generate a random number between 0 and 9 and that number is the index
+         * of the number of hikers to generate. 1 represents a 50% chance of
+         * haveing 1 hiker be generated, 2 represents 25%-30% chance of having
+         * 2 hikers generate and 3 ...you get it...we can add more numbers
+         * to the array to represent a greater chance of adding even more hikers
+         * 
+         * WARNING: say we add 3 hikers at once....after each hiker is added
+         * the checkHikerStackFull method still needs to be called.
+         */
         int r = (rand.nextInt(4) + 1);
         Hiker newHiker = new Hiker(r);
         tempHiker = newHiker;
