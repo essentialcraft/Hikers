@@ -14,7 +14,7 @@ package model;
  * 
  * TEST COMMENT
  */
-public abstract class Trail implements TrailInterface{
+public abstract class Trail implements TrailInterface {
     //keep track of each HikerStack that is added to all of the trails
     private ArrayQueue<HikerStack> hikerStackQueue;
     //maxCapacity is the limit to how many hikerstacks can be in the
