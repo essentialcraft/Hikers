@@ -1,10 +1,16 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +30,8 @@ public class Hiker {
     private String arrTime;
     //trailNo keeps track of the trail the hiker is assigned to
     private int trailNo;
+    //hiker name is string name of hiker
+    private String hikerName;
     //local time object to access timer setting methods
     private Date date;
     //hikerDB is the file each hikers arrTime is written to
@@ -43,23 +51,60 @@ public class Hiker {
         this.trailNo = trailNo;
         //increment hiker_number
         global_hiker_Number++;
-        //set hiker as the combination of random first name and rando
-        //last name
+        //set hikerName as random name from file
+        giveHikerName();
         this.hiker = global_hiker_Number;
         //setting hikerDB file path
         hiker_DB = "hikers.txt";
         //lastly, write new hiker to file
         writeToFile();
     }
-    //reads 
-//    private String randomFirst(){
-//        String firstName;
-//        return firstName;
-//    };
-//    private String randomLast(){
-//        String firstName;
-//        return firstName;
-//    };
+    
+    //reads a random first name and a random last name from a text file and
+    //gives a newly generated hiker a name
+    private void giveHikerName(){
+        String s = "";
+        String fn = "firstNames.text";
+        String ln = "lastNames.text";
+        Random rand = new Random();
+        BufferedReader brf = null;
+        BufferedReader brl = null;
+        try {
+            brf = new BufferedReader(new FileReader(new File(fn)));
+            brl = new BufferedReader(new FileReader(new File(ln)));
+            int firstNameInt = rand.nextInt(100);
+            int lastNameInt = rand.nextInt(100);
+            for(int i = 0; i <= firstNameInt; i++){
+                s = brf.readLine() + " ";
+            }
+            String temp = "";
+            for(int i = 0; i <= lastNameInt; i++){
+                temp = brl.readLine();
+            }
+            s += temp;
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            ex.getMessage();
+        }catch (IOException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            ex.getMessage();
+        }finally{
+            try {
+                brf.close();
+                brl.close();
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
+        }
+        this.hikerName = s;
+    }
+    
+    
+    
+    //returns hikerName string
+    public String getHikerName(){
+        return hikerName;
+    }
     
     
     
