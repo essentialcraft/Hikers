@@ -35,7 +35,7 @@ public class TrailsApp {
                     window.getWaitPanel().setList(model.getTempHiker().toString());
                     window.getTrailsPanel(1).setNamesToList(model.getTempHiker().toString());
                 try {
-                    sleep(30);
+                    sleep(300);
                 } catch (InterruptedException ex) {
                     ex.getMessage();
                 }}
