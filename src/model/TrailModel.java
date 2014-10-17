@@ -94,9 +94,14 @@ public class TrailModel {
     //appropriate trail que
     private void checkHikerStackFull(HikerStack h, int trailNumber){
         if(h.isFull()){
-            trailController.assignHikerStack(h, trailNumber);
-            //clear the stack
-            h.clear();
+            HikerStack temp = new HikerStack();
+            for(int i = 0; i< temp.getSize(); i++){
+                temp.push(h.pop());
+            }
+            trailController.assignHikerStack(temp, trailNumber);
+            //USED TO CALL CLEAR METHOD BUT INSTEAD POP METHOD IS CALLED
+            //INTO A TEMPORARY HIKERSTACK WHICH IS THEN PASSED INTO THE 
+            //ASSIGNHIKERSTACK METHOD
         }
     }
     

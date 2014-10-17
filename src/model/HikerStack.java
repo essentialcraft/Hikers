@@ -123,4 +123,9 @@ public class HikerStack<E>{
         }
         count = 0;
     }
+    
+    //returns size of elements which is 10
+    public int getSize(){
+        return elements.length;
+    }
 }

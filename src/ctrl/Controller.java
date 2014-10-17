@@ -27,8 +27,10 @@ public class Controller {
         
         this.window.addListener(new SubmitListener());
         
-        //window.getWaitList();
+        //window.getWaitPanel();
     }
+    
+    
         
     //main flow of methods
     public class SubmitListener implements ActionListener {
