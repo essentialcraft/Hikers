@@ -123,4 +123,22 @@ public class HikerStack<E>{
         }
         count = 0;
     }
+    
+    public int size(){
+        return STACK_SIZE;
+    }
+    
+    public String printName(int name){
+       return elements[name].toString();
+    }
+    
+    public String printNames(){
+        String str = "";
+        
+       for(int j = 0; j < elements.length; j++){
+           str += elements[j].toString() + "\n";
+       } 
+       
+       return str;
+    }
 }

@@ -104,7 +104,7 @@ public class MainFrame {
         return waitList;
     }
     
-    public TrailList getTrailsPanel(int index){
-        return trails[index];
+    public TrailList getTrailPanel(int trailChoice){
+        return trails[trailChoice];
     }
 }

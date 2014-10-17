@@ -6,6 +6,7 @@
 package ctrl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -30,17 +31,37 @@ public class Controller {
         //window.getWaitList();
     }
         
-    //main flow of methods
+    public void addNamesToTrail(int trailChoice){
+        //window.getTrailsPanel(1).setNamesToList(model.getTrailController().getTrailOne().);
+        //Trail trail = model.getTrailController().getTrail();
+        Trail trail = (TrailOne)model.getTrailController().getTrail(1);
+        
+        if(trail.getTrailQueue().size() > 0){
+            for(int i = 0; i < trail.getTrailQueue().size(); i++){
+                HikerStack temp = trail.getTrailQueue().poll();
+                System.out.println(temp.printNames());
+                for(int j = 0; j < temp.size();i++){
+                    window.getTrailPanel(1).setNamesToList(temp.printName(j));
+                    
+                }
+            }
+        }
+
+
+
+//window.getTrailPanel(trailChoice).setNamesToList();
+        
+    }
+
+
+
+
+
+//main flow of methods
     public class SubmitListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {
-            
-            
-            
-            
-         
-            
-            
+        
         }
     
     

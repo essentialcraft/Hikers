@@ -64,4 +64,9 @@ public abstract class Trail implements TrailInterface {
         
         return h;
     }
+    
+    public ArrayQueue<HikerStack> getTrailQueue(){
+        return hikerStackQueue;
+    }
+    
 }

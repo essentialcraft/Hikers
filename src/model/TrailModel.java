@@ -67,21 +67,23 @@ public class TrailModel {
          * the checkHikerStackFull method still needs to be called.
          */
         int r = (rand.nextInt(4) + 1);
+        System.out.println(r);
+        //int r = 1;
         Hiker newHiker = new Hiker(r);
         tempHiker = newHiker;
         
         if(r == 1){
             hikerStackOne.push(newHiker);
-            checkHikerStackFull(hikerStackOne, r);
+            checkHikerStackFull(hikerStackOne, r-1);
         }else if(r == 2){
             hikerStackTwo.push(newHiker);
-            checkHikerStackFull(hikerStackTwo, r);
+            checkHikerStackFull(hikerStackTwo, r-1);
         }else if(r == 3){
             hikerStackThree.push(newHiker);
-            checkHikerStackFull(hikerStackThree, r);
+            checkHikerStackFull(hikerStackThree, r-1);
         }else if(r == 4){
             hikerStackFour.push(newHiker);
-            checkHikerStackFull(hikerStackFour, r);
+            checkHikerStackFull(hikerStackFour, r-1);
         }
     }
     
@@ -96,7 +98,7 @@ public class TrailModel {
         if(h.isFull()){
             trailController.assignHikerStack(h, trailNumber);
             //clear the stack
-            h.clear();
+            //h.clear();
         }
     }
     
