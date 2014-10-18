@@ -39,7 +39,7 @@ public class Controller {
         Trail trail = (TrailOne)model.getTrailController().getTrail(1);
         //window.getTrailPanel(1).clearList();
         
-        if(trail.getTrailQueue().size() > 0){
+        if(trail.getTrailQueue().size() == 2){
             for(int i = 0; i < trail.getTrailQueue().size(); i++){
                 HikerStack temp = trail.getTrailQueue().poll();
                 System.out.println(temp.printNames());

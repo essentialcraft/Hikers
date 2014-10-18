@@ -19,14 +19,14 @@ import java.util.LinkedList;
 public abstract class Trail implements TrailInterface {
     //keep track of each HikerStack that is added to all of the trails
     private ArrayQueue<HikerStack> hikerStackQueue;
-    private LinkedList<Hiker> hikersOnMountain;
+    private LinkedList<Hiker> hikersOnTrail;
     //maxCapacity is the limit to how many hikerstacks can be in the
     //que before the que needs to be empties
     private final int MAX_CAPACITY = 2;
     
     public Trail(){
         hikerStackQueue = new ArrayQueue();
-        hikersOnMountain = new LinkedList();
+        hikersOnTrail = new LinkedList();
     }
     
     /*
@@ -54,12 +54,12 @@ public abstract class Trail implements TrailInterface {
     
     public void addHikerToMountain(HikerStack hikerIn){
         for(int i = 0 ; i < hikerIn.size(); i++){
-            hikersOnMountain.add(hikerIn.pop());
+            hikersOnTrail.add(hikerIn.pop());
         }
     }
     
     public LinkedList getHikersOnMountain(){
-        return hikersOnMountain;
+        return hikersOnTrail;
     }
     
     

@@ -64,7 +64,7 @@ public class TrailList extends JPanel {
     
     public void addHiker(Hiker hiker){
         hikerLabels.add(new JLabel(hiker.getHikerName())); 
-        hikerNamePanel.add(hikerLabels.getFirst(), "wrap");
+        hikerNamePanel.add(hikerLabels.getFirst(), "span");
         labelsCount++;
         this.revalidate();
         this.repaint();
