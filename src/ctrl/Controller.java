@@ -28,8 +28,10 @@ public class Controller {
         
         this.window.addListener(new SubmitListener());
         
-        //window.getWaitList();
+        //window.getWaitPanel();
     }
+    
+    
         
     public void addNamesToTrail(int trailChoice){
         //window.getTrailsPanel(1).setNamesToList(model.getTrailController().getTrailOne().);
