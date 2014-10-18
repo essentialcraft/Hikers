@@ -7,6 +7,7 @@ package view;
 
 import java.util.LinkedList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -42,6 +43,7 @@ public class TrailList extends JPanel {
                 "", // Layout Constraints
                 "[]", // Column constraints
                 "[][]")); // Row constraints)););
+        hikerLabels = new LinkedList();
         scroll = new JScrollPane(hikerNamePanel);
         
         this.setLayout(new MigLayout(
@@ -63,8 +65,9 @@ public class TrailList extends JPanel {
     }
     
     public void addHiker(Hiker hiker){
+        
         hikerLabels.add(new JLabel(hiker.getHikerName())); 
-        hikerNamePanel.add(hikerLabels.getFirst(), "span");
+        hikerNamePanel.add(hikerLabels.getLast(), "span");
         labelsCount++;
         this.revalidate();
         this.repaint();

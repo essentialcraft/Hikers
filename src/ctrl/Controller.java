@@ -36,14 +36,11 @@ public class Controller {
     
         
     public void addNamesToTrail(int trailChoice){
-        //window.getTrailsPanel(1).setNamesToList(model.getTrailController().getTrailOne().);
-        //Trail trail = model.getTrailController().getTrail();
-        Trail trail = (TrailOne)model.getTrailController().getTrail(1);
-        //window.getTrailPanel(1).clearList();
-        
+        Trail trail = model.getTrailController().getTrail(1);
+      
         if(!trail.getHikersOnMountain().isEmpty()){
             ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
-            
+            System.out.println(i.next().getHikerName());
             while (i.hasNext()) {
 	            window.getTrailPanel(1).addHiker(i.next());
 	        }
