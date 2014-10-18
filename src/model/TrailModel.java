@@ -79,17 +79,26 @@ public class TrailModel {
         
         if(hikersWaiting.size() == 20){
             if(r == 1){
-                hikerStackOne.push(newHiker);
-                checkHikerStackFull(hikerStackOne, r-1);
+                for(int i = 0; i < 20-1; i++){
+                    hikerStackOne.push(hikersWaiting.poll());
+                    checkHikerStackFull(hikerStackOne, r-1);
+                }
+                
             }else if(r == 2){
-                hikerStackTwo.push(newHiker);
-                checkHikerStackFull(hikerStackTwo, r-1);
+                for(int i = 0; i < 20-1; i++){
+                    hikerStackOne.push(hikersWaiting.poll());
+                    checkHikerStackFull(hikerStackOne, r-1);
+                }
             }else if(r == 3){
-                hikerStackThree.push(newHiker);
-                checkHikerStackFull(hikerStackThree, r-1);
+                for(int i = 0; i < 20-1; i++){
+                    hikerStackOne.push(hikersWaiting.poll());
+                    checkHikerStackFull(hikerStackOne, r-1);
+                }
             }else if(r == 4){
-                hikerStackFour.push(newHiker);
-                checkHikerStackFull(hikerStackFour, r-1);
+                for(int i = 0; i < 20-1; i++){
+                    hikerStackOne.push(hikersWaiting.poll());
+                    checkHikerStackFull(hikerStackOne, r-1);
+                }
             }
         
         }

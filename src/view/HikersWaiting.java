@@ -70,31 +70,39 @@ public class HikersWaiting extends JPanel {
     }
     
     public void addHiker(Hiker hiker){
-        hikerLabels.add(new JLabel(hiker.getHikerName())); 
-        hikerNamePanel.add(hikerLabels.getLast(), "wrap");
-        labelsCount++;
-        this.revalidate();
-        this.repaint();
-
-        //frame.pack();
+        if(!checkForHiker(hiker)){
+            
+            
+            hikerLabels.add(new JLabel(hiker.getHikerName())); 
+            hikerNamePanel.add(hikerLabels.getLast(), "wrap");
+            labelsCount++;
+            this.revalidate();
+            this.repaint();
+        }
     }
     
     public void removeHiker(Hiker hiker){
-        Iterator<JLabel> labelIter = hikerLabels.iterator();
+        if(checkForHiker(hiker)){
+            Iterator<JLabel> labelIter = hikerLabels.iterator();
+        if(labelIter.hasNext()){
+            if(labelIter.next().getText() == hiker.getHikerName()){
+                labelIter.remove();
+            }
+            this.revalidate();
+            this.repaint();
+        }}
+    }
+    
+    public boolean checkForHiker(Hiker hiker){
+        
         boolean found = false;
+        Iterator<JLabel> labelIter = hikerLabels.iterator();
         if(labelIter.hasNext()){
             if(labelIter.next().getText() == hiker.getHikerName()){
                 found = true;
-                if(found){
-                    labelIter.remove();
-                    labelsCount--;
-        }
             }
         }
-        
-        
-        this.revalidate();
-        this.repaint();
+        return found;
     }
     
 }

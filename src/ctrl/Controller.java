@@ -51,6 +51,7 @@ public class Controller {
             ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
             System.out.println(i.next().getHikerName());
             while (i.hasNext()) {
+                    
 	            window.getTrailPanel(trailChoice).addHiker(i.next());
 	        }
         }
