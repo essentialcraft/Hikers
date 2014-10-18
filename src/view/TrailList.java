@@ -45,4 +45,7 @@ public class TrailList extends JPanel {
         trailList.insert(in + "\n", 0);
     }
     
+    public void clearList(){
+        trailList.setText("");
+    }
 }

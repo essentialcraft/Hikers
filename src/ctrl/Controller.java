@@ -37,12 +37,13 @@ public class Controller {
         //window.getTrailsPanel(1).setNamesToList(model.getTrailController().getTrailOne().);
         //Trail trail = model.getTrailController().getTrail();
         Trail trail = (TrailOne)model.getTrailController().getTrail(1);
+        window.getTrailPanel(1).clearList();
         
         if(trail.getTrailQueue().size() > 0){
             for(int i = 0; i < trail.getTrailQueue().size(); i++){
                 HikerStack temp = trail.getTrailQueue().poll();
                 System.out.println(temp.printNames());
-                for(int j = 0; j < temp.size();i++){
+                for(int j = 0; j < temp.size();j++){
                     window.getTrailPanel(1).setNamesToList(temp.printName(j));
                     
                 }

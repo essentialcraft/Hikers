@@ -69,4 +69,11 @@ public abstract class Trail implements TrailInterface {
         return hikerStackQueue;
     }
     
+//    public StringBuilder getContentOfStack(){
+//        StringBuilder str = new StringBuilder();
+//        for(int i = 0; i < hikerStackQueue.size();i++){
+//            
+//        }
+//    }
+//    
 }
