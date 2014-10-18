@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ctrl;
+import java.util.Iterator;
 import javax.swing.SwingUtilities;
 import model.*;
 import view.*;
@@ -35,6 +36,11 @@ public class TrailsApp {
                     it++;
                     if(it == 100){ 
                         bool = false;
+//                        Iterator<Hiker> iter = model.getHikersWaiting().iterator();
+//                        while(iter.hasNext()){
+//                            System.out.print(iter.next().getHikerName());
+//                        }
+                        
                     }
                     model.generateHiker();
                     //set the most recent hiker to the waiting list
@@ -42,8 +48,9 @@ public class TrailsApp {
                     SwingUtilities.invokeLater(new Runnable(){
                       public void run(){    
                       //
-                      window.getWaitPanel().removeHiker(model.getTempHiker());
                       window.getWaitPanel().addHiker(model.getTempHiker());
+                      window.getWaitPanel().removeHiker(model.getHikersWaiting());
+                      
                       controller.updateGUI();
                       //window.getWaitPanel().setList(model.getTempHiker().toString());
                       }

@@ -109,6 +109,10 @@ public class TrailModel {
         return tempHiker;
     }
     
+    public LinkedList<Hiker> getHikersWaiting(){
+        return hikersWaiting;
+    }
+    
     //checks if a hikerstack is full and if it is it dumps down into the
     //appropriate trail que
     private void checkHikerStackFull(HikerStack h, int trailNumber){

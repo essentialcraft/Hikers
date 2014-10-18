@@ -36,6 +36,7 @@ public class Controller {
     public void updateGUI(){
         for(int i = 0; i < 4; i++){
             addNamesToTrail(i);
+            
         }
         
         
@@ -49,10 +50,8 @@ public class Controller {
       
         if(!trail.getHikersOnMountain().isEmpty()){
             ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
-            System.out.println(i.next().getHikerName());
             while (i.hasNext()) {
-                    
-	            window.getTrailPanel(trailChoice).addHiker(i.next());
+                window.getTrailPanel(trailChoice).addHiker(i.next());
 	        }
         }
 

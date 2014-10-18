@@ -6,10 +6,13 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -71,8 +74,6 @@ public class HikersWaiting extends JPanel {
     
     public void addHiker(Hiker hiker){
         if(!checkForHiker(hiker)){
-            
-            
             hikerLabels.add(new JLabel(hiker.getHikerName())); 
             hikerNamePanel.add(hikerLabels.getLast(), "wrap");
             labelsCount++;
@@ -81,28 +82,72 @@ public class HikersWaiting extends JPanel {
         }
     }
     
-    public void removeHiker(Hiker hiker){
-        if(checkForHiker(hiker)){
-            Iterator<JLabel> labelIter = hikerLabels.iterator();
-        if(labelIter.hasNext()){
-            if(labelIter.next().getText() == hiker.getHikerName()){
-                labelIter.remove();
+    public void removeHiker(LinkedList hikers){
+        ListIterator<Hiker> waitListIter = hikers.listIterator();
+        ListIterator<JLabel> labelIter = hikerLabels.listIterator();
+        
+        
+        while(waitListIter.hasNext()){
+            Hiker temp = waitListIter.next();
+            for (Component c : hikerNamePanel.getComponents()) {
+                if(((JLabel)c).getText() == temp.getHikerName()){
+                    
+                    //JOptionPane.showMessageDialog(null, ((JLabel)c).getText() + temp.getHikerName());
+                    
+                    ((JLabel)c).remove(c);
+                    hikerNamePanel.revalidate();
+                    hikerNamePanel.repaint();
+                }
             }
-            this.revalidate();
-            this.repaint();
-        }}
+
+
+
+
+
+
+//            if(checkForHiker(temp)){
+//                while(labelIter.hasNext()){
+//                    JLabel tempLabel = labelIter.next();
+//                    if(tempLabel.getText() == temp.getHikerName()){
+//                        labelIter.remove();
+//                        for (Component c : hikerNamePanel.getComponents()) {
+//                            if(((JLabel)c).getText() == tempLabel.getText()){
+//                                ((JLabel)c).remove(c);
+//                                hikerNamePanel.revalidate();
+//                                hikerNamePanel.repaint();
+//                            }
+//                        }
+//                        
+//                        
+//                    }
+//                }
+//            }
+            
+            
+        }
+
+//        if(checkForHiker(hiker)){
+//            Iterator<JLabel> labelIter = hikerLabels.iterator();
+//        
+//            while(labelIter.hasNext()){
+//                if(labelIter.next().getText() == hiker.getHikerName()){
+//                    labelIter.remove();
+//                }
+//            this.revalidate();
+//            this.repaint();
+//            }
+//        }
     }
     
     public boolean checkForHiker(Hiker hiker){
         
         boolean found = false;
         Iterator<JLabel> labelIter = hikerLabels.iterator();
-        if(labelIter.hasNext()){
+        while(labelIter.hasNext()){
             if(labelIter.next().getText() == hiker.getHikerName()){
                 found = true;
             }
         }
         return found;
     }
-    
 }
