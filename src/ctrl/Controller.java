@@ -33,29 +33,26 @@ public class Controller {
         //window.getWaitPanel();
     }
     
+    public void updateGUI(){
+        for(int i = 0; i < 4; i++){
+            addNamesToTrail(i);
+        }
+        
+        
+        
+    }
+    
     
         
     public void addNamesToTrail(int trailChoice){
-        Trail trail = model.getTrailController().getTrail(1);
+        Trail trail = model.getTrailController().getTrail(trailChoice);
       
         if(!trail.getHikersOnMountain().isEmpty()){
             ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
             System.out.println(i.next().getHikerName());
             while (i.hasNext()) {
-	            window.getTrailPanel(1).addHiker(i.next());
+	            window.getTrailPanel(trailChoice).addHiker(i.next());
 	        }
-            
-
-
-
-//            for(int i = 0; i < trail.getTrailQueue().size(); i++){
-//                HikerStack temp = trail.getTrailQueue().poll();
-//                System.out.println(temp.printNames());
-//                for(int j = 0; j < temp.size();j++){
-//                    window.getTrailPanel(1).addHiker(temp.pop());
-//                    
-//                }
-//            }
         }
 
 

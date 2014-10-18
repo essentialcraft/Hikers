@@ -23,21 +23,28 @@ public class TrailsApp {
             final MainFrame window = new MainFrame();
             final TrailModel model = new TrailModel();
             final Controller controller = new Controller(window, model);
-            
-            //window.getList(1).setList("Jimmothy Tybottom");
         
+            int it = 0;
+            final boolean bool = true;
         Thread thread = new Thread(){
+            int it = 0;
+            boolean bool = true;
             @Override
             public void run(){
-                while(true){
+                while(bool){
+                    it++;
+                    if(it == 100){ 
+                        bool = false;
+                    }
                     model.generateHiker();
                     //set the most recent hiker to the waiting list
                     
                     SwingUtilities.invokeLater(new Runnable(){
                       public void run(){    
                       //
+                      window.getWaitPanel().removeHiker(model.getTempHiker());
                       window.getWaitPanel().addHiker(model.getTempHiker());
-                      controller.addNamesToTrail(1);
+                      controller.updateGUI();
                       //window.getWaitPanel().setList(model.getTempHiker().toString());
                       }
                     });

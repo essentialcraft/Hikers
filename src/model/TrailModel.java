@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 /**
@@ -38,6 +39,8 @@ public class TrailModel {
     //temporaraly stores a newly generated hiker
     private Hiker tempHiker;
     
+    private LinkedList<Hiker> hikersWaiting;
+    
     public TrailModel(){
         trailController = new TrailController();
         hikerStackOne = new HikerStack();
@@ -45,6 +48,7 @@ public class TrailModel {
         hikerStackThree = new HikerStack();
         hikerStackFour = new HikerStack();
         rand = new Random();
+        hikersWaiting = new LinkedList();
     }
     
     //uses a psuedo random number to assign hikers at "random" to trails
@@ -71,19 +75,23 @@ public class TrailModel {
         //int r = 1;
         Hiker newHiker = new Hiker(r);
         tempHiker = newHiker;
+        hikersWaiting.add(newHiker);
         
-        if(r == 1){
-            hikerStackOne.push(newHiker);
-            checkHikerStackFull(hikerStackOne, r-1);
-        }else if(r == 2){
-            hikerStackTwo.push(newHiker);
-            checkHikerStackFull(hikerStackTwo, r-1);
-        }else if(r == 3){
-            hikerStackThree.push(newHiker);
-            checkHikerStackFull(hikerStackThree, r-1);
-        }else if(r == 4){
-            hikerStackFour.push(newHiker);
-            checkHikerStackFull(hikerStackFour, r-1);
+        if(hikersWaiting.size() == 20){
+            if(r == 1){
+                hikerStackOne.push(newHiker);
+                checkHikerStackFull(hikerStackOne, r-1);
+            }else if(r == 2){
+                hikerStackTwo.push(newHiker);
+                checkHikerStackFull(hikerStackTwo, r-1);
+            }else if(r == 3){
+                hikerStackThree.push(newHiker);
+                checkHikerStackFull(hikerStackThree, r-1);
+            }else if(r == 4){
+                hikerStackFour.push(newHiker);
+                checkHikerStackFull(hikerStackFour, r-1);
+            }
+        
         }
     }
     

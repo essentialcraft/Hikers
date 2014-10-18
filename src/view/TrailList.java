@@ -5,7 +5,9 @@
  */
 package view;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -56,19 +58,20 @@ public class TrailList extends JPanel {
         this.add(scroll, "grow");
     }
     
-    public void setNamesToList(String in) {
-        trailList.insert(in + "\n", 0);
-    }
-    
-    public void clearList(){
-        trailList.setText("");
-    }
-    
     public void addHiker(Hiker hiker){
+        Iterator<JLabel> labelIter = hikerLabels.iterator();
+        boolean found = false;
+        if(labelIter.hasNext()){
+            if(labelIter.next().getText() == hiker.getHikerName()){
+                found = true;
+            }
+        }
         
-        hikerLabels.add(new JLabel(hiker.getHikerName())); 
-        hikerNamePanel.add(hikerLabels.getLast(), "span");
-        labelsCount++;
+        if(!found){
+            hikerLabels.add(new JLabel(hiker.getHikerName())); 
+            hikerNamePanel.add(hikerLabels.getLast(), "span");
+            labelsCount++;
+        }
         this.revalidate();
         this.repaint();
 

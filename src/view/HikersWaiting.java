@@ -7,6 +7,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.Iterator;
 import java.util.LinkedList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -76,6 +77,24 @@ public class HikersWaiting extends JPanel {
         this.repaint();
 
         //frame.pack();
+    }
+    
+    public void removeHiker(Hiker hiker){
+        Iterator<JLabel> labelIter = hikerLabels.iterator();
+        boolean found = false;
+        if(labelIter.hasNext()){
+            if(labelIter.next().getText() == hiker.getHikerName()){
+                found = true;
+                if(found){
+                    labelIter.remove();
+                    labelsCount--;
+        }
+            }
+        }
+        
+        
+        this.revalidate();
+        this.repaint();
     }
     
 }
