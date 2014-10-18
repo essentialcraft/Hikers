@@ -4,7 +4,14 @@
  * and open the template in the editor.
  */
 package ctrl;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.swing.SwingUtilities;
+import javax.swing.text.NumberFormatter;
 import model.*;
 import view.*;
 
@@ -23,18 +30,32 @@ public class TrailsApp {
             final MainFrame window = new MainFrame();
             final TrailModel model = new TrailModel();
             final Controller controller = new Controller(window, model);
-        
-            int it = 0;
-            final boolean bool = true;
+            
+            
         Thread thread = new Thread(){
-            int it = 0;
-            boolean bool = true;
+            int TIME_SPEED = 100;
+            //number formatter to include leading and trailing zeros
+            NumberFormat formatter = new DecimalFormat("00");
+            int hours = 07;
+            int minutes = 00;
+            //set a string to look like a time object
+            String time;
+            
             @Override
             public void run(){
-                while(bool){
-                    it++;
-                    if(it == 100){ 
-                        bool = false;
+                while(true){
+                    /*
+                     * Each time the thread wakes up it adds '1' to the minutes
+                     * variable of our made up time stamp. When 59 minutes have
+                     * been added the hours int increments. Upon reaching 10:00
+                     * the hikers will be allowed to walk up their trails
+                     */
+                    time = formatter.format(hours) + ":" + formatter.format(minutes);
+                    System.out.println(time);
+                    minutes++;
+                    if(minutes == 60){
+                        minutes = 00;
+                        hours++;
                     }
                     model.generateHiker();
                     //set the most recent hiker to the waiting list
@@ -50,7 +71,7 @@ public class TrailsApp {
                     });
                 try {
                     
-                    sleep(100);
+                    sleep(TIME_SPEED);
                     
                 } catch (InterruptedException ex) {
                     ex.getMessage();
