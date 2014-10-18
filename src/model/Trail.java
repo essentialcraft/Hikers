@@ -1,5 +1,7 @@
 package model;
 
+import java.util.LinkedList;
+
 
 
 
@@ -17,12 +19,14 @@ package model;
 public abstract class Trail implements TrailInterface {
     //keep track of each HikerStack that is added to all of the trails
     private ArrayQueue<HikerStack> hikerStackQueue;
+    private LinkedList<Hiker> hikersOnMountain;
     //maxCapacity is the limit to how many hikerstacks can be in the
     //que before the que needs to be empties
     private final int MAX_CAPACITY = 2;
     
     public Trail(){
         hikerStackQueue = new ArrayQueue();
+        hikersOnMountain = new LinkedList();
     }
     
     /*
@@ -37,10 +41,8 @@ public abstract class Trail implements TrailInterface {
     public void checkTrailsFull(){
         
         if(hikerStackQueue.size() == MAX_CAPACITY){
-            //releaseHikers();
-            //i assume we can release all 20 hikers at once meaning in the 
-            //gui it will show a list of 20 hiker names
-            //after the "releaseHikers()" is called empty the que
+            addHikerToMountain(hikerStackQueue.poll());
+            addHikerToMountain(hikerStackQueue.poll());
         }
     }
     
@@ -48,6 +50,21 @@ public abstract class Trail implements TrailInterface {
     public void addStack(HikerStack h){
         hikerStackQueue.add(h);
     }
+    
+    
+    public void addHikerToMountain(HikerStack hikerIn){
+        for(int i = 0 ; i < hikerIn.size(); i++){
+            hikersOnMountain.add(hikerIn.pop());
+        }
+    }
+    
+    public LinkedList getHikersOnMountain(){
+        return hikersOnMountain;
+    }
+    
+    
+    
+    
     
     //returns all hikers who are CURRENTLY going up the mountain
     //does not include hikers that are in the que

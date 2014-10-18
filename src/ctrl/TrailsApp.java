@@ -35,13 +35,15 @@ public class TrailsApp {
                     
                     SwingUtilities.invokeLater(new Runnable(){
                       public void run(){    
+                      //
+                      window.getWaitPanel().addHiker(model.getTempHiker());
                       controller.addNamesToTrail(1);
-                      window.getWaitPanel().setList(model.getTempHiker().toString());
+                      //window.getWaitPanel().setList(model.getTempHiker().toString());
                       }
                     });
                 try {
                     
-                    sleep(30);
+                    sleep(300);
                     
                 } catch (InterruptedException ex) {
                     ex.getMessage();

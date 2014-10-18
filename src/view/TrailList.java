@@ -5,11 +5,13 @@
  */
 package view;
 
+import java.util.LinkedList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultCaret;
+import model.Hiker;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -20,6 +22,11 @@ public class TrailList extends JPanel {
     
     private JLabel trailLabel;
     private JTextArea trailList;
+    
+    private JPanel hikerNamePanel;
+    private LinkedList<JLabel> hikerLabels; 
+    private int labelsCount = 0;
+    
     private JScrollPane scroll;
     
     public TrailList(String trailName){
@@ -29,7 +36,13 @@ public class TrailList extends JPanel {
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         trailList.setLineWrap(true);
         trailList.setWrapStyleWord(true);
-        scroll = new JScrollPane(trailList);
+        
+        
+        hikerNamePanel = new JPanel(new MigLayout(
+                "", // Layout Constraints
+                "[]", // Column constraints
+                "[][]")); // Row constraints)););
+        scroll = new JScrollPane(hikerNamePanel);
         
         this.setLayout(new MigLayout(
                 "debug, fill, ins 0", // Layout Constraints
@@ -47,5 +60,15 @@ public class TrailList extends JPanel {
     
     public void clearList(){
         trailList.setText("");
+    }
+    
+    public void addHiker(Hiker hiker){
+        hikerLabels.add(new JLabel(hiker.getHikerName())); 
+        hikerNamePanel.add(hikerLabels.getFirst(), "wrap");
+        labelsCount++;
+        this.revalidate();
+        this.repaint();
+
+        //frame.pack();
     }
 }
