@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ctrl;
+import javax.swing.SwingUtilities;
 import model.*;
 import view.*;
 
@@ -28,15 +29,20 @@ public class TrailsApp {
         Thread thread = new Thread(){
             @Override
             public void run(){
-                
                 while(true){
                     model.generateHiker();
                     //set the most recent hiker to the waiting list
-                    window.getWaitPanel().setList(model.getTempHiker().toString());
                     
+                    SwingUtilities.invokeLater(new Runnable(){
+                      public void run(){    
+                      controller.addNamesToTrail(1);
+                      window.getWaitPanel().setList(model.getTempHiker().toString());
+                      }
+                    });
                 try {
+                    
                     sleep(30);
-                    //controller.addNamesToTrail(1);
+                    
                 } catch (InterruptedException ex) {
                     ex.getMessage();
                 }}
