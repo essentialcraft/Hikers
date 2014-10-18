@@ -10,6 +10,7 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.text.NumberFormatter;
 import model.*;
@@ -57,6 +58,15 @@ public class TrailsApp {
                         minutes = 00;
                         hours++;
                     }
+                    
+                    /*
+                     * Checking to see if it is 10:00 and time to release hikers
+                     */
+                    if(hours >= 10){
+                        //find a way to release hikers up the trails from inside
+                        //here
+                    }
+                    
                     model.generateHiker();
                     //set the most recent hiker to the waiting list
                     
