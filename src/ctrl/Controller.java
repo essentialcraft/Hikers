@@ -6,6 +6,8 @@
 package ctrl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import javax.swing.JOptionPane;
 import model.*;
 import view.*;
@@ -39,15 +41,24 @@ public class Controller {
         Trail trail = (TrailOne)model.getTrailController().getTrail(1);
         //window.getTrailPanel(1).clearList();
         
-        if(trail.getTrailQueue().size() == 2){
-            for(int i = 0; i < trail.getTrailQueue().size(); i++){
-                HikerStack temp = trail.getTrailQueue().poll();
-                System.out.println(temp.printNames());
-                for(int j = 0; j < temp.size();j++){
-                    window.getTrailPanel(1).addHiker(temp.pop());
-                    
-                }
-            }
+        if(!trail.getHikersOnMountain().isEmpty()){
+            ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
+            
+            while (i.hasNext()) {
+	            window.getTrailPanel(1).addHiker(i.next());
+	        }
+            
+
+
+
+//            for(int i = 0; i < trail.getTrailQueue().size(); i++){
+//                HikerStack temp = trail.getTrailQueue().poll();
+//                System.out.println(temp.printNames());
+//                for(int j = 0; j < temp.size();j++){
+//                    window.getTrailPanel(1).addHiker(temp.pop());
+//                    
+//                }
+//            }
         }
 
 

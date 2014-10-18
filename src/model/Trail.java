@@ -41,8 +41,8 @@ public abstract class Trail implements TrailInterface {
     public void checkTrailsFull(){
         
         if(hikerStackQueue.size() == MAX_CAPACITY){
-            addHikerToMountain(hikerStackQueue.poll());
-            addHikerToMountain(hikerStackQueue.poll());
+            addHikerToMountain(hikerStackQueue.remove());
+            addHikerToMountain(hikerStackQueue.remove());
         }
     }
     
@@ -53,8 +53,11 @@ public abstract class Trail implements TrailInterface {
     
     
     public void addHikerToMountain(HikerStack hikerIn){
-        for(int i = 0 ; i < hikerIn.size(); i++){
-            hikersOnTrail.add(hikerIn.pop());
+        
+        if(!hikerIn.empty()){
+            for(int i = 0 ; i < hikerIn.size(); i++){
+                hikersOnTrail.add(hikerIn.pop());
+            }
         }
     }
     

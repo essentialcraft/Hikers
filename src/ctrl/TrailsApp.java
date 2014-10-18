@@ -43,7 +43,7 @@ public class TrailsApp {
                     });
                 try {
                     
-                    sleep(300);
+                    sleep(100);
                     
                 } catch (InterruptedException ex) {
                     ex.getMessage();
