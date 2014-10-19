@@ -7,13 +7,9 @@ package view;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.ListIterator;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.DefaultCaret;
 import model.Hiker;
 import net.miginfocom.swing.MigLayout;
 
@@ -63,6 +59,12 @@ public class TrailList extends JPanel {
             this.revalidate();
             this.repaint();
         }
+    }
+    public void timeToRemoveHiker(int i){
+        hikerNamePanel.remove(hikerLabels.remove(i));
+        //hikerLabels.remove(i);
+        this.revalidate();
+        this.repaint();
     }
     
     //PROBABLY DOESN'T WORK, USE TO REMOVE HIKERS FROM TRAIL DISPLAY

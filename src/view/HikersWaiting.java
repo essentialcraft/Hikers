@@ -5,19 +5,13 @@
  */
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.DefaultCaret;
-import model.ArrayQueue;
 import model.Hiker;
 import net.miginfocom.swing.MigLayout;
 
