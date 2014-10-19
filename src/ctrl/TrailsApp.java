@@ -36,20 +36,29 @@ public class TrailsApp {
                     it++;
                     if(it == 100){ 
                         bool = false;
+                        
+                        
+                        //window.getWaitPanel().removeHikers();
 //                        Iterator<Hiker> iter = model.getHikersWaiting().iterator();
 //                        while(iter.hasNext()){
 //                            System.out.print(iter.next().getHikerName());
 //                        }
                         
                     }
+                    System.out.println("\nNew Hiker");
                     model.generateHiker();
+                    
+                    System.out.println("Hikers on waitlist");
+                    for(Hiker hiker : model.getHikersWaiting()){
+                            System.out.println(hiker.getHikerName());
+                        }
                     //set the most recent hiker to the waiting list
                     
                     SwingUtilities.invokeLater(new Runnable(){
                       public void run(){    
                       //
-                      window.getWaitPanel().addHiker(model.getTempHiker());
-                      window.getWaitPanel().removeHiker(model.getHikersWaiting());
+                      
+                      //window.getWaitPanel().removeHiker(model.getHikersWaiting());
                       
                       controller.updateGUI();
                       //window.getWaitPanel().setList(model.getTempHiker().toString());

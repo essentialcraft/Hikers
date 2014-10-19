@@ -34,10 +34,14 @@ public class Controller {
     }
     
     public void updateGUI(){
+        this.window.getWaitPanel().addHiker(model.getHikersWaiting().getLast());
+        this.window.getWaitPanel().updateWaitListWindow(model.getHikersWaiting());
         for(int i = 0; i < 4; i++){
-            addNamesToTrail(i);
             
+            
+            this.addNamesToTrail(i);
         }
+        
         
         
         
@@ -47,21 +51,16 @@ public class Controller {
         
     public void addNamesToTrail(int trailChoice){
         Trail trail = model.getTrailController().getTrail(trailChoice);
-      
+        
         if(!trail.getHikersOnMountain().isEmpty()){
             ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
             while (i.hasNext()) {
                 window.getTrailPanel(trailChoice).addHiker(i.next());
 	        }
         }
+}
 
-
-
-//window.getTrailPanel(trailChoice).setNamesToList();
-        
-    }
-
-
+    
 
 
 

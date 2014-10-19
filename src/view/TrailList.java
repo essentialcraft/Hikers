@@ -68,24 +68,24 @@ public class TrailList extends JPanel {
         }
     }
     
-    public void removeHiker(Hiker hiker){
-        if(checkForHiker(hiker)){
-            Iterator<JLabel> labelIter = hikerLabels.iterator();
-        while(labelIter.hasNext()){
-            if(labelIter.next().getText() == hiker.getHikerName()){
-                labelIter.remove();
-            }
-            this.revalidate();
-            this.repaint();
-        }}
-    }
+//    public void removeHiker(Hiker hiker){
+//        if(checkForHiker(hiker)){
+//            Iterator<JLabel> labelIter = hikerLabels.iterator();
+//        while(labelIter.hasNext()){
+//            if(labelIter.next().getText() == hiker.getHikerName()){
+//                labelIter.remove();
+//            }
+//            this.revalidate();
+//            this.repaint();
+//        }}
+//    }
     
     public boolean checkForHiker(Hiker hiker){
         
         boolean found = false;
         Iterator<JLabel> labelIter = hikerLabels.iterator();
         while(labelIter.hasNext()){
-            if(labelIter.next().getText() == hiker.getHikerName()){
+            if(labelIter.next().getText().equals(hiker.getHikerName())){
                 found = true;
             }
         }

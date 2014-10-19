@@ -42,7 +42,7 @@ public class Hiker {
     
     //when a new hiker is created a trail number is assigned to the hiker at
     //random
-    public Hiker(int trailNo){
+    public Hiker(){
         //Create date object to store arrival date/time
         this.date = new Date();
         //store arrival time in string

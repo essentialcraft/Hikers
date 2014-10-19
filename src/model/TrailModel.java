@@ -71,9 +71,9 @@ public class TrailModel {
          * the checkHikerStackFull method still needs to be called.
          */
         int r = (rand.nextInt(4) + 1);
-        System.out.println(r);
+        //System.out.println(r);
         //int r = 1;
-        Hiker newHiker = new Hiker(r);
+        Hiker newHiker = new Hiker();
         tempHiker = newHiker;
         hikersWaiting.add(newHiker);
         
