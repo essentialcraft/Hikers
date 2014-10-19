@@ -19,8 +19,8 @@ import view.*;
 public class Controller {
 
     
-    // TODO code application logic here
-        
+    
+    //The two classes the controller will....control    
     MainFrame window;
     TrailModel model;
     
@@ -33,22 +33,16 @@ public class Controller {
         //window.getWaitPanel();
     }
     
+    //update all the necessary panels
     public void updateGUI(){
         this.window.getWaitPanel().addHiker(model.getHikersWaiting().getLast());
         this.window.getWaitPanel().updateWaitListWindow(model.getHikersWaiting());
         for(int i = 0; i < 4; i++){
-            
-            
             this.addNamesToTrail(i);
         }
-        
-        
-        
-        
     }
     
-    
-        
+    //will add a list of assigned names to their appropriate display on the GUI
     public void addNamesToTrail(int trailChoice){
         Trail trail = model.getTrailController().getTrail(trailChoice);
         
@@ -59,12 +53,7 @@ public class Controller {
 	        }
         }
 }
-
-    
-
-
-
-//main flow of methods
+    //main flow of methods
     public class SubmitListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent ae) {

@@ -28,7 +28,7 @@ import net.miginfocom.swing.MigLayout;
 public class HikersWaiting extends JPanel {
     
     private JLabel waitLabel;
-    private JTextArea waitList;
+    
     
     private JScrollPane scroll;
     
@@ -41,43 +41,29 @@ public class HikersWaiting extends JPanel {
     public HikersWaiting(){
         hikerLabels = new LinkedList();
         waitLabel = new JLabel("Hikers Waiting");
-        waitList = new JTextArea();
+        
         
         hikerNamePanel = new JPanel(new MigLayout(
                 "", // Layout Constraints
                 "[]", // Column constraints
                 "[][]")); // Row constraints)););
         
-        DefaultCaret caret = (DefaultCaret)waitList.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-        waitList.setLineWrap(true);
-        waitList.setWrapStyleWord(true);
         scroll = new JScrollPane(hikerNamePanel);
         this.setLayout(new MigLayout(
                 "fill", // Layout Constraints
                 "[200]", // Column constraints
                 "[][grow]")); // Row constraints));
-        
-        
+
         this.add(waitLabel, "wrap");
         this.add(scroll, "grow");
-        //this.add(scroll, "grow");
-        
-        
     }
     
-    public void setList(String in) {
-        waitList.insert(in + "\n", 0);
-    }
-    
-    public JTextArea getWaitList(){
-        return waitList;
-    }
-    
+    //add a hiker to the waiting list panel
     public void addHiker(Hiker hiker){
+        //check if the given hiker is on the panel
         if(!checkForHiker(hiker)){
-            hikerLabels.add(new JLabel(hiker.getHikerName())); 
-            //hikerLabels.add(new JLabel(String.valueOf(labelsCount) + ' ' + hiker.getHikerName())); 
+            hikerLabels.add(new JLabel(hiker.getHikerName()));
+            //get newly created JPanel and add it
             hikerNamePanel.add(hikerLabels.getLast(), "wrap");
             labelsCount++;
             this.revalidate();
@@ -86,11 +72,13 @@ public class HikersWaiting extends JPanel {
     }
     
     
-    
+    //this will check the waitlist from the model against the hikers
+    //listed as waiting on the GUI, and remove hikers no longer waiting
     public void updateWaitListWindow(LinkedList<Hiker> hikersWaiting){
-        //ListIterator<Hiker> hikerIt = hikersWaiting.listIterator();
+        //to iterate through current labels
         Iterator<JLabel> labelIter = hikerLabels.iterator();
         
+        //if a label doesn't belong remove it
         while(labelIter.hasNext()){
             JLabel temp = labelIter.next();
             if(!checkList(hikersWaiting, temp.getText())){
@@ -105,6 +93,7 @@ public class HikersWaiting extends JPanel {
         }
     }
     
+    //check a given list against a String, used by update()
     public boolean checkList(LinkedList<Hiker> hikersWaiting, String hikerMatch){
         boolean found = false;
         ListIterator<Hiker> waitIter = hikersWaiting.listIterator();

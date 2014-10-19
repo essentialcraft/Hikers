@@ -48,6 +48,8 @@ public class TrailModel {
         hikerStackThree = new HikerStack();
         hikerStackFour = new HikerStack();
         rand = new Random();
+        
+        //this LL holds the Hikers currently waiting for assignment
         hikersWaiting = new LinkedList();
     }
     
@@ -74,9 +76,11 @@ public class TrailModel {
         //System.out.println(r);
         //int r = 1;
         Hiker newHiker = new Hiker();
-        tempHiker = newHiker;
+        
+        //add newly created hiker to the waitlist
         hikersWaiting.add(newHiker);
         
+        //when 20 hikers exist, assign them to a trail
         if(hikersWaiting.size() == 20){
             if(r == 1){
                 for(int i = 0; i < 20-1; i++){
@@ -102,15 +106,6 @@ public class TrailModel {
             }
         
         }
-    }
-    
-    //returns temp hiker
-    public Hiker getTempHiker(){
-        return tempHiker;
-    }
-    
-    public LinkedList<Hiker> getHikersWaiting(){
-        return hikersWaiting;
     }
     
     //checks if a hikerstack is full and if it is it dumps down into the
@@ -154,5 +149,10 @@ public class TrailModel {
      */
     public TrailController getTrailController(){
         return trailController;
+    }
+    
+    //return the wait list 
+    public LinkedList<Hiker> getHikersWaiting(){
+        return hikersWaiting;
     }
 }

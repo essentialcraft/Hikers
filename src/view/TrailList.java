@@ -24,9 +24,12 @@ import net.miginfocom.swing.MigLayout;
 public class TrailList extends JPanel {
     
     private JLabel trailLabel;
-    private JTextArea trailList;
     
+    //panel to be used for JScroll
     private JPanel hikerNamePanel;
+    
+    //this list is added to the GUI to represent hikers on the trial
+    //used LL so it can grow and shrink
     private LinkedList<JLabel> hikerLabels; 
     private int labelsCount = 0;
     
@@ -34,13 +37,6 @@ public class TrailList extends JPanel {
     
     public TrailList(String trailName){
         trailLabel = new JLabel(trailName);
-        trailList = new JTextArea();
-        DefaultCaret caret = (DefaultCaret)trailList.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-        trailList.setLineWrap(true);
-        trailList.setWrapStyleWord(true);
-        
-        
         hikerNamePanel = new JPanel(new MigLayout(
                 "", // Layout Constraints
                 "[]", // Column constraints
@@ -58,6 +54,7 @@ public class TrailList extends JPanel {
         this.add(scroll, "grow");
     }
     
+    //add a hiker to the panel and repaint
     public void addHiker(Hiker hiker){
         if(!checkForHiker(hiker)){
             hikerLabels.add(new JLabel(hiker.getHikerName())); 
@@ -68,20 +65,23 @@ public class TrailList extends JPanel {
         }
     }
     
-//    public void removeHiker(Hiker hiker){
-//        if(checkForHiker(hiker)){
-//            Iterator<JLabel> labelIter = hikerLabels.iterator();
-//        while(labelIter.hasNext()){
-//            if(labelIter.next().getText() == hiker.getHikerName()){
-//                labelIter.remove();
-//            }
-//            this.revalidate();
-//            this.repaint();
-//        }}
-//    }
+    //PROBABLY DOESN'T WORK, USE TO REMOVE HIKERS FROM TRAIL DISPLAY
+    //FOR WORKING VERSION OF ALGORITHM CHECK updateWaitListWindow() in HikersWaiting
+    public void removeHiker(Hiker hiker){
+        if(checkForHiker(hiker)){
+            Iterator<JLabel> labelIter = hikerLabels.iterator();
+        while(labelIter.hasNext()){
+            if(labelIter.next().getText() == hiker.getHikerName()){
+                labelIter.remove();
+            }
+            this.revalidate();
+            this.repaint();
+        }}
+    }
     
+    //checks for an incoming hiker over hikers aleady on the trial
+    //used for removal of hikers (unimplemented)
     public boolean checkForHiker(Hiker hiker){
-        
         boolean found = false;
         Iterator<JLabel> labelIter = hikerLabels.iterator();
         while(labelIter.hasNext()){

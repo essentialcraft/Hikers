@@ -33,41 +33,24 @@ public class TrailsApp {
             @Override
             public void run(){
                 while(bool){
+                    
+                    //run the loop only one hundred times
                     it++;
                     if(it == 100){ 
                         bool = false;
-                        
-                        
-                        //window.getWaitPanel().removeHikers();
-//                        Iterator<Hiker> iter = model.getHikersWaiting().iterator();
-//                        while(iter.hasNext()){
-//                            System.out.print(iter.next().getHikerName());
-//                        }
-                        
                     }
-                    System.out.println("\nNew Hiker");
+                    
+                    //create a new hiker
                     model.generateHiker();
                     
-                    System.out.println("Hikers on waitlist");
-                    for(Hiker hiker : model.getHikersWaiting()){
-                            System.out.println(hiker.getHikerName());
-                        }
-                    //set the most recent hiker to the waiting list
-                    
+                    //update the GUI
                     SwingUtilities.invokeLater(new Runnable(){
-                      public void run(){    
-                      //
-                      
-                      //window.getWaitPanel().removeHiker(model.getHikersWaiting());
-                      
-                      controller.updateGUI();
-                      //window.getWaitPanel().setList(model.getTempHiker().toString());
+                      public void run(){
+                          controller.updateGUI();
                       }
                     });
                 try {
-                    
                     sleep(100);
-                    
                 } catch (InterruptedException ex) {
                     ex.getMessage();
                 }}
