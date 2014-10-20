@@ -70,7 +70,7 @@ public class Controller {
            ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
            while(i.hasNext() && x >= 0){
                window.getTrailPanel(trailChoice).timeToRemoveHiker(x);
-               model.getTrailController().getTrail(trailChoice).getHikersOnMountain().removeFirst();
+               model.getTrailController().getTrail(trailChoice).getHikersOnMountain().removeLast();
                x--;
            }
        }

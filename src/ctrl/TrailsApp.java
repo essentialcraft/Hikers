@@ -67,6 +67,7 @@ public class TrailsApp {
                                     @Override
                                     public void run(){
                                         while(true){
+                                            JOptionPane.showMessageDialog(null, controller.model.getTrailController().getTrail(1).getHikersOnMountain().size());
                                             /*
                                              * method that checks if a trail
                                              * has a full queue. If true, deletes
@@ -81,7 +82,7 @@ public class TrailsApp {
                                                 }
                                             });
                                             try{
-                                                sleep(5000);
+                                                sleep(1000);
                                             }catch(InterruptedException ex){
                                             ex.getMessage();
                                             }
