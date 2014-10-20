@@ -30,13 +30,15 @@ public class TrailsApp {
         Thread thread = new Thread(){
             //time_speed is how often the thread should sleep for
             //can be changed by buttons on gui
-            int TIME_SPEED = 500;
+            int TIME_SPEED = 30;
             //variables that will keep track of our own 'time'
             NumberFormat formatter = new DecimalFormat("00");
             int hours = 07;
             int minutes = 00;
             //String time will appear like a clock
             String time;
+            //boolean that will stop thread when its 10am
+            boolean threadBool = true;
             
             
             @Override
@@ -44,7 +46,7 @@ public class TrailsApp {
                 
                 
                 
-                while(true){
+                while(threadBool){
                     /*
                      * Each time the thread wakes up it adds '1' to the minutes
                      * variable and checks for 59 minutes. upon reaching 60
@@ -60,7 +62,8 @@ public class TrailsApp {
                     }
                     if(hours >= 10){
                         if(formatter.format(hours).equalsIgnoreCase("10") && formatter.format(minutes).equalsIgnoreCase("00")){
-                                Thread realeaseHikersThread = new Thread(){
+                            threadBool = false;    
+                            Thread realeaseHikersThread = new Thread(){
                                     @Override
                                     public void run(){
                                         while(true){

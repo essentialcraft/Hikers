@@ -61,7 +61,7 @@ public class TrailList extends JPanel {
         }
     }
     public void timeToRemoveHiker(int i){
-        hikerNamePanel.remove(hikerLabels.remove(i));
+        hikerNamePanel.remove(hikerLabels.removeFirst());
         //hikerLabels.remove(i);
         this.revalidate();
         this.repaint();

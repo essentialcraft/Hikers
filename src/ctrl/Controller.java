@@ -7,7 +7,6 @@ package ctrl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ListIterator;
-import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -71,6 +70,7 @@ public class Controller {
            ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
            while(i.hasNext() && x >= 0){
                window.getTrailPanel(trailChoice).timeToRemoveHiker(x);
+               model.getTrailController().getTrail(trailChoice).getHikersOnMountain().removeFirst();
                x--;
            }
        }
