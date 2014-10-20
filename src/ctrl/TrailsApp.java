@@ -67,6 +67,13 @@ public class TrailsApp {
                                     @Override
                                     public void run(){
                                         while(true){
+                                            time = formatter.format(hours) + ":" + formatter.format(minutes);
+                                            System.out.println(time);
+                                            minutes++;
+                                            if(minutes > 59){
+                                                minutes = 00;
+                                                hours++;
+                                            }
                                             JOptionPane.showMessageDialog(null, controller.model.getTrailController().getTrail(1).getHikersOnMountain().size());
                                             /*
                                              * method that checks if a trail
