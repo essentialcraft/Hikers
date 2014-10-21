@@ -6,7 +6,9 @@
 package ctrl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.ListIterator;
+import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -48,12 +50,16 @@ public class Controller {
     //will add a list of assigned names to their appropriate display on the GUI
     public void addNamesToTrail(int trailChoice){
         Trail trail = model.getTrailController().getTrail(trailChoice);
-        
+        Hiker temp = null;
         if(!trail.getHikersOnMountain().isEmpty()){
-            ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
+            Iterator<Hiker> i = trail.getHikersOnMountain().iterator();
             while (i.hasNext()) {
-                window.getTrailPanel(trailChoice).addHiker(i.next());
-	        }
+                temp = i.next();
+                if(temp != null){
+                    
+                    window.getTrailPanel(trailChoice).addHiker(temp);
+                }
+            }
         }
 }
     
@@ -65,13 +71,16 @@ public class Controller {
        //if so then remove 20 hikers
        
        //remove names from jlabels also remove names from logic lists
-       if(trail.getHikersOnMountain().size() >= 20){
-           int x = 19;
-           ListIterator<Hiker> i = trail.getHikersOnMountain().listIterator();
-           while(i.hasNext() && x >= 0){
+       int x = 0;
+       if(trail.getHikersOnMountain().size() >= 10){
+           Iterator<Hiker> i = trail.getHikersOnMountain().iterator();
+           while(i.hasNext() && x < 10){
                window.getTrailPanel(trailChoice).timeToRemoveHiker(x);
-               model.getTrailController().getTrail(trailChoice).getHikersOnMountain().removeLast();
-               x--;
+               //model.getHikersWaiting().remove(x);
+               
+               Hiker temp = i.next();
+               i.remove();
+               x++;
            }
        }
 }

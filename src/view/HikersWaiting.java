@@ -144,6 +144,15 @@ public class HikersWaiting extends JPanel {
         return found;
     }
     
+    //checks for any remaining hikers
+    public boolean areThereStraglers(){
+        if(this.hikerList.size()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
         
 
 

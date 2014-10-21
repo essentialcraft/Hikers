@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package ctrl;
+import static java.lang.Thread.sleep;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import model.*;
 import view.*;
 
@@ -16,37 +19,82 @@ import view.*;
  * @author Ian
  */
 public class TrailsApp {
-
+    private static Thread threadOne, threadTwo;
+    //time_speed is how often the thread should sleep for
+    //can be changed by buttons on gui
+    static int TIME_SPEED = 100;
+    //variables that will keep track of our own 'time'
+    static NumberFormat formatter = new DecimalFormat("00");
+    static int hours = 07;
+    static int minutes = 00;
+    //String time will appear like a clock
+    static String time;
+    
+    final static MainFrame window = new MainFrame();
+    final static TrailModel model = new TrailModel();
+    final static Controller controller = new Controller(window, model);
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
-            final MainFrame window = new MainFrame();
-            final TrailModel model = new TrailModel();
-            final Controller controller = new Controller(window, model);
+//            final MainFrame window = new MainFrame();
+//            final TrailModel model = new TrailModel();
+//            final Controller controller = new Controller(window, model);
         
-        Thread thread = new Thread(){
-            //time_speed is how often the thread should sleep for
-            //can be changed by buttons on gui
-            int TIME_SPEED = 30;
-            //variables that will keep track of our own 'time'
-            NumberFormat formatter = new DecimalFormat("00");
-            int hours = 07;
-            int minutes = 00;
-            //String time will appear like a clock
-            String time;
-            //boolean that will stop thread when its 10am
-            boolean threadBool = true;
-            
-            
+        threadTwo = new Thread(){
+                @Override
+                public void run(){
+                    while(true){
+                        time = formatter.format(hours) + ":" + formatter.format(minutes);
+                        System.out.println(time);
+                        minutes++;
+                        if(minutes > 59){
+                            minutes = 00;
+                            hours++;
+                        }
+                        //JOptionPane.showMessageDialog(null, controller.model.getTrailController().getTrail(1).getHikersOnMountain().size());
+
+                        /*
+                         * method that checks if a trail
+                         * has a full queue. If true, deletes
+                         * top 20 hikers from that trails que
+                         */
+                        for(int i = 0; i < 4; i++){
+                            controller.removeNamesFromTrail(i);
+                        }
+                        SwingUtilities.invokeLater(new Runnable(){
+                            public void run(){
+                                controller.updateGUI();
+                            }
+                        });
+
+                        /*
+                         * Checking for the leftover hikers
+                         * in hikers waiting
+                         */
+//                        if(controller.window.getWaitPanel().areThereStraglers()){
+//                            for(int i =0; i < 4; i++){
+//
+//                            }
+//                        }
+                        try{
+                            //thread sleeps for 5 seconds to simulate hikers taking
+                            //that long to go up the mountain
+                            sleep(1000);
+                        }catch(InterruptedException ex){
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                    }
+                }
+            };
+        
+         threadOne = new Thread(){
             @Override
             public void run(){
-                
-                
-                
-                while(threadBool){
+                while(true){
                     /*
                      * Each time the thread wakes up it adds '1' to the minutes
                      * variable and checks for 59 minutes. upon reaching 60
@@ -60,45 +108,9 @@ public class TrailsApp {
                         minutes = 00;
                         hours++;
                     }
-                    if(hours >= 10){
-                        if(formatter.format(hours).equalsIgnoreCase("10") && formatter.format(minutes).equalsIgnoreCase("00")){
-                            threadBool = false;    
-                            Thread realeaseHikersThread = new Thread(){
-                                    @Override
-                                    public void run(){
-                                        while(true){
-                                            time = formatter.format(hours) + ":" + formatter.format(minutes);
-                                            System.out.println(time);
-                                            minutes++;
-                                            if(minutes > 59){
-                                                minutes = 00;
-                                                hours++;
-                                            }
-                                            JOptionPane.showMessageDialog(null, controller.model.getTrailController().getTrail(1).getHikersOnMountain().size());
-                                            /*
-                                             * method that checks if a trail
-                                             * has a full queue. If true, deletes
-                                             * top 20 hikers from that trails que
-                                             */
-                                            for(int i = 0; i < 4; i++){
-                                                controller.removeNamesFromTrail(i);
-                                            }
-                                            SwingUtilities.invokeLater(new Runnable(){
-                                                public void run(){
-                                                    controller.updateGUI();
-                                                }
-                                            });
-                                            try{
-                                                sleep(1000);
-                                            }catch(InterruptedException ex){
-                                            ex.getMessage();
-                                            }
-                                        }
-                                    }
-                                };
-                                
-                            realeaseHikersThread.start();
-                        }
+                    if(hours == 10){
+                        Thread.currentThread().interrupt();
+                        threadTwo.start();
                     }
                     
                     //create a new hiker
@@ -113,12 +125,22 @@ public class TrailsApp {
                 try {
                     sleep(TIME_SPEED);
                 } catch (InterruptedException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                    ex.getMessage();
                 }}
             }
         };
-        thread.start();
-        
+         
+         threadOne.start();
+//         class hopeThisWorks extends TimerTask{
+//             public void run(){
+//                 for(int i = 0; i < 4; i++){
+//                     controller.removeNamesFromTrail(i);
+//                 }
+//                 controller.updateGUI();
+//                 JOptionPane.showMessageDialog(null, "hi");
+//             }
+//             
+//         }
+        //timer.schedule(new hopeThisWorks(), 0, 5000);
     }
-    
 }

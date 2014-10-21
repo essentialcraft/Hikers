@@ -26,7 +26,7 @@ public class TrailList extends JPanel {
     
     //this list is added to the GUI to represent hikers on the trial
     //used LL so it can grow and shrink
-    private LinkedList<JLabel> hikerLabels; 
+    public LinkedList<JLabel> hikerLabels; 
     private int labelsCount = 0;
     
     private JScrollPane scroll;
